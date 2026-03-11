@@ -3,7 +3,7 @@
 > 独立投资者金融分析插件 — 基于 Anthropic financial-services-plugins 架构，替换为免费数据源，新增 Crypto 模块
 >
 > 设计日期：2026-03-11
-> 状态：Phase 1-4 已完成，Phase 5 待实施
+> 状态：Phase 1-5 全部完成
 > 架构变更：已从单插件改为多插件 marketplace（2026-03-11 决定）
 
 ---
@@ -107,7 +107,7 @@ indie-finance-plugin/
 │       ├── catalyst-calendar/SKILL.md # 适配自官方 equity-research
 │       └── news-digest/SKILL.md      # 自动触发，无独立命令
 │
-├── portfolio/                    # 子插件 4: 组合管理 [Phase 5 待实施]
+├── portfolio/                    # 子插件 4: 组合管理 [Phase 5 ✅]
 │   ├── .claude-plugin/plugin.json
 │   ├── .mcp.json                 # yahoo-finance
 │   ├── hooks/hooks.json
@@ -415,8 +415,8 @@ lbo-model, cim-builder, process-letter, strip-profile, pitch-deck, initiating-co
 | `/macro:dashboard [scope]` | macro | fred → defillama → coingecko → web | Markdown | ✅ |
 | `/macro:morning [focus]` | macro | fred → coingecko → defillama → web | Markdown | ✅ |
 | `/macro:catalyst [tickers]` | macro | fred → coingecko → defillama → web | Markdown | ✅ |
-| `/portfolio:rebalance` | portfolio | yahoo-finance | Markdown + Excel | 待实施 |
-| `/portfolio:tlh` | portfolio | yahoo-finance | Markdown + Excel | 待实施 |
+| `/portfolio:rebalance` | portfolio | yahoo-finance → web | Markdown + Excel | ✅ |
+| `/portfolio:tlh` | portfolio | yahoo-finance → web | Markdown + Excel | ✅ |
 
 ---
 
@@ -457,11 +457,10 @@ Phase 4: Macro 模块 ✅
   ├── 新建 news-digest skill（自动触发，无独立命令）
   └── 编写 /macro:dashboard, /macro:morning, /macro:catalyst 命令
 
-Phase 5: Portfolio 模块（待实施）
-  ├── Fork portfolio-rebalance skill（from wealth-management）
-  ├── Fork tax-loss-harvesting skill（from wealth-management）
-  ├── 编写 /rebalance, /tlh 命令
-  └── 端到端测试
+Phase 5: Portfolio 模块 ✅
+  ├── 新建 portfolio-rebalance skill（偏离分析/再平衡建议/税务感知）
+  ├── 新建 tax-loss-harvesting skill（TLH/替代标的/Wash Sale）
+  └── 编写 /portfolio:rebalance, /portfolio:tlh 命令
 ```
 
 ### 依赖关系
