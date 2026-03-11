@@ -11,10 +11,9 @@
       "args": ["@iqai/mcp-defillama"]
     },
     "dune": {
-      "type": "stdio",
-      "command": "uvx",
-      "args": ["dune-analytics-mcp"],
-      "env": { "DUNE_API_KEY": "${DUNE_API_KEY}" }
+      "type": "http",
+      "url": "https://api.dune.com/mcp/v1",
+      "headers": { "X-DUNE-API-KEY": "${DUNE_API_KEY}" }
     }
   }
 }
