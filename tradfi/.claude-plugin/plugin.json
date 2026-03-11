@@ -1,0 +1,8 @@
+{
+  "name": "tradfi",
+  "version": "0.1.0",
+  "description": "Traditional finance analysis: comps, DCF, earnings, stock screening — powered by free data sources (Yahoo Finance, Alpha Vantage, FMP)",
+  "author": {
+    "name": "jdy"
+  }
+}

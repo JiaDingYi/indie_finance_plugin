@@ -3,7 +3,8 @@
 > 独立投资者金融分析插件 — 基于 Anthropic financial-services-plugins 架构，替换为免费数据源，新增 Crypto 模块
 >
 > 设计日期：2026-03-11
-> 状态：待实施
+> 状态：Phase 1-5 全部完成
+> 架构变更：已从单插件改为多插件 marketplace（2026-03-11 决定）
 
 ---
 
@@ -28,92 +29,98 @@
 
 ## 二、插件架构
 
+> **架构决策**：采用多插件 marketplace 架构，每个子模块独立管理 MCP、commands、skills。
+> 原因：各模块数据源完全不同，独立管理更清晰；用户可按需安装子插件。
+
 ### 目录结构
 
 ```
 indie-finance-plugin/
 ├── .claude-plugin/
-│   └── plugin.json
-├── .mcp.json
-├── CLAUDE.md
+│   └── marketplace.json          # 多插件入口，注册 4 个子插件
+├── CLAUDE.md                     # 全局指令（fallback 策略、输出规则）
+├── README.md
+├── .gitignore
 │
-├── commands/
-│   ├── comps.md              # /comps [ticker]
-│   ├── dcf.md                # /dcf [ticker]
-│   ├── earnings.md           # /earnings [ticker] [quarter]
-│   ├── screen.md             # /screen [条件]
-│   ├── macro.md              # /macro
-│   ├── token.md              # /token [symbol]
-│   ├── defi.md               # /defi [protocol]
-│   ├── airdrop.md            # /airdrop [project]
-│   └── onchain.md            # /onchain [query]
+├── tradfi/                       # 子插件 1: 传统金融 [Phase 2 ✅]
+│   ├── .claude-plugin/plugin.json
+│   ├── .mcp.json                 # yahoo-finance, alpha-vantage, fmp
+│   ├── hooks/hooks.json
+│   ├── commands/
+│   │   ├── comps.md              # /tradfi:comps [ticker]
+│   │   ├── dcf.md                # /tradfi:dcf [ticker]
+│   │   ├── earnings.md           # /tradfi:earnings [ticker] [Q]
+│   │   ├── screen.md             # /tradfi:screen [条件]
+│   │   ├── thesis.md             # /tradfi:thesis [ticker]
+│   │   ├── model-update.md       # /tradfi:model-update [ticker]
+│   │   └── debug-model.md        # /tradfi:debug-model [path]
+│   ├── skills/
+│   │   ├── comps-analysis/SKILL.md
+│   │   ├── dcf-model/
+│   │   │   ├── SKILL.md
+│   │   │   ├── TROUBLESHOOTING.md
+│   │   │   ├── requirements.txt
+│   │   │   └── scripts/validate_dcf.py
+│   │   ├── earnings-analysis/
+│   │   │   ├── SKILL.md
+│   │   │   └── references/{best-practices,report-structure,workflow}.md
+│   │   ├── competitive-analysis/
+│   │   │   ├── SKILL.md
+│   │   │   └── references/{frameworks,schemas}.md
+│   │   ├── clean-data-xls/SKILL.md
+│   │   ├── idea-generation/SKILL.md
+│   │   ├── thesis-tracker/SKILL.md
+│   │   ├── audit-xls/SKILL.md
+│   │   └── model-update/SKILL.md
+│   └── _reference/               # 保留但不激活的官方 skill（13 个）
 │
-├── skills/
-│   │
-│   │── [TradFi 模块 — fork 自官方]
-│   ├── comps-analysis/
-│   │   ├── SKILL.md
-│   │   └── references/
-│   ├── dcf-model/
-│   │   ├── SKILL.md
-│   │   ├── TROUBLESHOOTING.md
-│   │   ├── requirements.txt
-│   │   └── scripts/validate_dcf.py
-│   ├── earnings-analysis/
-│   │   ├── SKILL.md
-│   │   └── references/
-│   │       ├── best-practices.md
-│   │       ├── report-structure.md
-│   │       └── workflow.md
-│   ├── competitive-analysis/
-│   │   ├── SKILL.md
-│   │   └── references/
-│   │       ├── frameworks.md
-│   │       └── schemas.md
-│   ├── clean-data-xls/
-│   │   └── SKILL.md
-│   │
-│   │── [Crypto 模块 — 新建]
-│   ├── token-analysis/
-│   │   └── SKILL.md
-│   ├── defi-protocol/
-│   │   └── SKILL.md
-│   ├── airdrop-eval/
-│   │   ├── SKILL.md
-│   │   └── references/
-│   │       └── scoring-framework.md    # 六维度评分框架
-│   ├── onchain-query/
-│   │   ├── SKILL.md
-│   │   └── references/
-│   │       └── preset-queries.md       # 预置 Dune query ID
-│   │
-│   │── [通用模块 — 新建]
-│   ├── macro-dashboard/
-│   │   └── SKILL.md
-│   ├── news-digest/
-│   │   └── SKILL.md                    # 自动触发，无独立命令
-│   │
-│   └── _reference/                     # 保留但不激活，供后续参考优化
-│       ├── lbo-model/
-│       ├── cim-builder/
-│       ├── process-letter/
-│       ├── strip-profile/
-│       ├── pitch-deck/
-│       ├── initiating-coverage/
-│       ├── merger-model/
-│       ├── buyer-list/
-│       ├── deal-tracker/
-│       ├── datapack-builder/
-│       ├── morning-note/
-│       ├── thesis-tracker/
-│       ├── catalyst-calendar/
-│       ├── idea-generation/
-│       ├── model-update/
-│       ├── sector-overview/
-│       └── earnings-preview/
+├── crypto/                       # 子插件 2: 加密市场 [Phase 3 ✅]
+│   ├── .claude-plugin/plugin.json
+│   ├── .mcp.json                 # coingecko, defillama, dune
+│   ├── hooks/hooks.json
+│   ├── commands/
+│   │   ├── token.md              # /crypto:token [symbol]
+│   │   ├── defi.md               # /crypto:defi [protocol]
+│   │   ├── airdrop.md            # /crypto:airdrop [project]
+│   │   └── onchain.md            # /crypto:onchain [query]
+│   └── skills/
+│       ├── token-analysis/SKILL.md
+│       ├── defi-protocol/SKILL.md
+│       ├── airdrop-eval/
+│       │   ├── SKILL.md
+│       │   └── references/scoring-framework.md
+│       └── onchain-query/
+│           ├── SKILL.md
+│           └── references/preset-queries.md
 │
-└── hooks/
-    └── hooks.json
+├── macro/                        # 子插件 3: 宏观经济 [Phase 4 ✅]
+│   ├── .claude-plugin/plugin.json
+│   ├── .mcp.json                 # fred, defillama, coingecko
+│   ├── hooks/hooks.json
+│   ├── commands/
+│   │   ├── dashboard.md          # /macro:dashboard
+│   │   ├── morning.md            # /macro:morning
+│   │   └── catalyst.md           # /macro:catalyst
+│   └── skills/
+│       ├── macro-dashboard/SKILL.md
+│       ├── morning-note/SKILL.md     # 适配自官方 equity-research
+│       ├── catalyst-calendar/SKILL.md # 适配自官方 equity-research
+│       └── news-digest/SKILL.md      # 自动触发，无独立命令
+│
+├── portfolio/                    # 子插件 4: 组合管理 [Phase 5 ✅]
+│   ├── .claude-plugin/plugin.json
+│   ├── .mcp.json                 # yahoo-finance
+│   ├── hooks/hooks.json
+│   ├── commands/
+│   │   ├── rebalance.md          # /portfolio:rebalance
+│   │   └── tlh.md                # /portfolio:tlh
+│   └── skills/
+│       ├── portfolio-rebalance/SKILL.md
+│       └── tax-loss-harvesting/SKILL.md
+│
+└── docs/
+    ├── plans/                    # 设计文档
+    └── superpowers/              # brainstorming specs & plans
 ```
 
 ---
@@ -245,33 +252,42 @@ Layer 3: Chrome CDP 直接访问（Web Search 也不可用时）
 
 ## 五、模块详细设计
 
-### 5.1 TradFi 模块（Fork 自官方）
+### 5.1 TradFi 模块（`tradfi/` 子插件）✅ Phase 2 完成
 
 #### Fork 策略
 
-从 `anthropics/financial-services-plugins` 提取以下 skill，保留分析框架，替换数据源引用：
+从 `anthropics/financial-services-plugins` 提取 9 个 skill，保留分析框架，替换数据源引用：
 
-| 官方 Skill | 改动点 |
-|-----------|--------|
-| `comps-analysis` | 数据优先级从 "S&P Kensho → FactSet → Daloopa" 改为 "yahoo-finance → financial-modeling-prep → web search → chrome" |
-| `dcf-model` | 同上，含 `validate_dcf.py` 脚本直接复用 |
-| `earnings-analysis` | 含 `references/` 下的 best-practices、report-structure、workflow 直接复用 |
-| `competitive-analysis` | 含 `references/frameworks.md` 和 `schemas.md` 直接复用 |
-| `clean-data-xls` | Excel 清洗逻辑通用，直接复用 |
+| 官方 Skill | 改动点 | 状态 |
+|-----------|--------|------|
+| `comps-analysis` | 数据优先级改为 "yahoo-finance → fmp → alpha-vantage → web → chrome" | ✅ |
+| `dcf-model` | 同上，含 `validate_dcf.py` 脚本直接复用 | ✅ |
+| `earnings-analysis` | 含 `references/` 下 3 个文件，替换数据源 | ✅ |
+| `competitive-analysis` | 含 `references/` 下 2 个文件，替换数据源 | ✅ |
+| `clean-data-xls` | 移除 Office JS，保留 Python/openpyxl | ✅ |
+| `idea-generation` | 从 _reference 升级为正式 skill，添加免费数据源 | ✅ |
+| `thesis-tracker` | 从 _reference 升级为正式 skill，添加免费数据源 | ✅ |
+| `audit-xls` | 从 _reference 升级为正式 skill，通用审计框架 | ✅ |
+| `model-update` | 从 _reference 升级为正式 skill，添加免费数据源 | ✅ |
 
 #### 机构专用 Skill（保留为 `_reference/`）
 
-不注册 command，不激活，纯作后续参考优化：
-lbo-model, cim-builder, process-letter, strip-profile, pitch-deck, initiating-coverage, merger-model, buyer-list, deal-tracker, datapack-builder, morning-note, thesis-tracker, catalyst-calendar, idea-generation, model-update, sector-overview, earnings-preview
+不注册 command，不激活，纯作后续参考优化（13 个，原 17 个中 4 个已升级为正式 skill）：
+lbo-model, cim-builder, process-letter, strip-profile, pitch-deck, initiating-coverage, merger-model, buyer-list, deal-tracker, datapack-builder, morning-note, catalyst-calendar, sector-overview, earnings-preview
+
+> 注：原 _reference 中的 thesis-tracker、idea-generation、model-update、audit-xls（实为 financial-analysis 下的 skill）已升级为正式 skill，不再列入 _reference。
 
 #### 命令设计
 
 | Command | 用途 | 输出 |
 |---------|------|------|
-| `/comps [ticker]` | 可比公司分析 | Excel (.xlsx) + Markdown 摘要 |
-| `/dcf [ticker]` | DCF 估值模型 | Excel (.xlsx) + Markdown 摘要 |
-| `/earnings [ticker] [Q]` | 财报分析 | Markdown |
-| `/screen [条件]` | 股票筛选 | Markdown |
+| `/tradfi:comps [ticker]` | 可比公司分析 | Excel (.xlsx) + Markdown 摘要 |
+| `/tradfi:dcf [ticker]` | DCF 估值模型 | Excel (.xlsx) + Markdown 摘要 |
+| `/tradfi:earnings [ticker] [Q]` | 财报分析 | Markdown 报告 (8-12 页) |
+| `/tradfi:screen [条件]` | 股票筛选 | Markdown |
+| `/tradfi:thesis [ticker]` | 投资论点管理 | Markdown |
+| `/tradfi:model-update [ticker]` | 模型更新 | Excel + Markdown |
+| `/tradfi:debug-model [path]` | 模型审计 | 审计报告 |
 
 ### 5.2 Crypto 模块（新建）
 
@@ -383,17 +399,24 @@ lbo-model, cim-builder, process-letter, strip-profile, pitch-deck, initiating-co
 
 ## 七、命令总览
 
-| 命令 | 模块 | 数据源优先级 | 输出格式 |
-|------|------|------------|---------|
-| `/comps [ticker]` | TradFi | yahoo → fmp → web → chrome | Excel + Markdown |
-| `/dcf [ticker]` | TradFi | yahoo → fmp → web → chrome | Excel + Markdown |
-| `/earnings [ticker] [Q]` | TradFi | alpha-vantage → fmp → web → chrome | Markdown |
-| `/screen [条件]` | TradFi | yahoo → fmp → web | Markdown |
-| `/macro` | 通用 | fred → defillama → coingecko → web | Markdown |
-| `/token [symbol]` | Crypto | coingecko → web → chrome | Markdown |
-| `/defi [protocol]` | Crypto | defillama → coingecko → web → chrome | Markdown |
-| `/airdrop [project]` | Crypto | coingecko → defillama → dune → web → chrome | Markdown (P-模板) |
-| `/onchain [query]` | Crypto | dune → web → chrome | 对话内表格 |
+| 命令 | 子插件 | 数据源优先级 | 输出格式 | 状态 |
+|------|--------|------------|---------|------|
+| `/tradfi:comps [ticker]` | tradfi | yahoo → fmp → alpha-vantage → web → chrome | Excel + Markdown | ✅ |
+| `/tradfi:dcf [ticker]` | tradfi | yahoo → fmp → alpha-vantage → web → chrome | Excel + Markdown | ✅ |
+| `/tradfi:earnings [ticker] [Q]` | tradfi | alpha-vantage → yahoo → fmp → web → chrome | Markdown | ✅ |
+| `/tradfi:screen [条件]` | tradfi | yahoo → fmp → web → chrome | Markdown | ✅ |
+| `/tradfi:thesis [ticker]` | tradfi | yahoo → fmp → alpha-vantage → web → chrome | Markdown | ✅ |
+| `/tradfi:model-update [ticker]` | tradfi | yahoo → fmp → alpha-vantage → web → chrome | Excel + Markdown | ✅ |
+| `/tradfi:debug-model [path]` | tradfi | 本地文件 | 审计报告 | ✅ |
+| `/crypto:token [symbol]` | crypto | coingecko → web → chrome | Markdown | ✅ |
+| `/crypto:defi [protocol]` | crypto | defillama → coingecko → web → chrome | Markdown | ✅ |
+| `/crypto:airdrop [project]` | crypto | coingecko → defillama → dune → web → chrome | Markdown (P-模板) | ✅ |
+| `/crypto:onchain [query]` | crypto | dune → web → chrome | 对话内表格 | ✅ |
+| `/macro:dashboard [scope]` | macro | fred → defillama → coingecko → web | Markdown | ✅ |
+| `/macro:morning [focus]` | macro | fred → coingecko → defillama → web | Markdown | ✅ |
+| `/macro:catalyst [tickers]` | macro | fred → coingecko → defillama → web | Markdown | ✅ |
+| `/portfolio:rebalance` | portfolio | yahoo-finance → web | Markdown + Excel | ✅ |
+| `/portfolio:tlh` | portfolio | yahoo-finance → web | Markdown + Excel | ✅ |
 
 ---
 
@@ -402,40 +425,47 @@ lbo-model, cim-builder, process-letter, strip-profile, pitch-deck, initiating-co
 ### Phase 划分
 
 ```
-Phase 1: 基础骨架 + 数据层（Day 1）
-  ├── 创建插件目录结构和 plugin.json
-  ├── 配置 .mcp.json（7 个免费数据源）
+Phase 1: 基础骨架 + 数据层 ✅ 完成
+  ├── 创建多插件 marketplace 目录结构
+  ├── 4 个子插件骨架（tradfi/crypto/macro/portfolio）
+  ├── 各子插件 .mcp.json 配置
   ├── 编写 CLAUDE.md（fallback 策略、输出规则）
-  └── 验证所有 MCP 连接可用
+  └── README.md、.gitignore
 
-Phase 2: TradFi 模块（Day 1-2）
-  ├── Fork comps-analysis skill + 改写数据源引用
-  ├── Fork dcf-model skill + validate_dcf.py
-  ├── Fork earnings-analysis skill + references/
-  ├── Fork competitive-analysis skill
-  ├── Fork clean-data-xls skill
-  ├── 编写 /comps, /dcf, /earnings, /screen 命令
-  └── 迁移 _reference/ 目录（inactive skills）
+Phase 2: TradFi 模块 ✅ 完成
+  ├── Fork 9 个 skill（原计划 5 个，审计后增加 4 个）
+  │   ├── 原计划: comps-analysis, dcf-model, earnings-analysis, competitive-analysis, clean-data-xls
+  │   └── 新增: idea-generation, thesis-tracker, audit-xls, model-update
+  ├── 编写 7 个 command（原计划 4 个，增加 thesis, model-update, debug-model）
+  ├── 所有付费 MCP 引用替换为免费数据源
+  ├── 所有 Office JS 引用移除，仅保留 Python/openpyxl
+  └── 填充 _reference/ 目录（13 个 inactive skills）
 
-Phase 3: Crypto 模块（Day 2-3）
-  ├── 新建 token-analysis skill
-  ├── 新建 defi-protocol skill
-  ├── 新建 airdrop-eval skill（集成六维度框架）
-  ├── 新建 onchain-query skill
-  ├── 编写 /token, /defi, /airdrop, /onchain 命令
-  └── airdrop skill 对齐现有 P-xxx 模板格式
+Phase 3: Crypto 模块 ✅
+  ├── 升级 Dune MCP 为官方版（11 tools, HTTP remote）
+  ├── 新建 token-analysis skill（coingecko 数据）
+  ├── 新建 defi-protocol skill（defillama + coingecko 数据）
+  ├── 新建 airdrop-eval skill（六维度框架 + scoring-framework.md）
+  ├── 新建 onchain-query skill（Dune SQL + preset-queries.md）
+  ├── 编写 /crypto:token, /crypto:defi, /crypto:airdrop, /crypto:onchain 命令
+  └── airdrop skill 对齐 P-xxx 模板格式（Sprint/中等维护/低保维护档位）
 
-Phase 4: 通用模块 + 集成（Day 3）
-  ├── 新建 macro-dashboard skill
-  ├── 新建 news-digest skill（自动触发）
-  ├── 编写 /macro 命令
-  ├── 端到端测试所有 9 个命令
-  └── 微调 fallback 策略和输出格式
+Phase 4: Macro 模块 ✅
+  ├── 新建 macro-dashboard skill（FRED 数据 + 加密宏观）
+  ├── 适配 morning-note skill（官方 → 加密扩展）
+  ├── 适配 catalyst-calendar skill（官方 → 加密事件扩展）
+  ├── 新建 news-digest skill（自动触发，无独立命令）
+  └── 编写 /macro:dashboard, /macro:morning, /macro:catalyst 命令
+
+Phase 5: Portfolio 模块 ✅
+  ├── 新建 portfolio-rebalance skill（偏离分析/再平衡建议/税务感知）
+  ├── 新建 tax-loss-harvesting skill（TLH/替代标的/Wash Sale）
+  └── 编写 /portfolio:rebalance, /portfolio:tlh 命令
 ```
 
 ### 依赖关系
 
-Phase 2 和 Phase 3 可并行。Phase 4 依赖前两者完成。
+Phase 3、4、5 互相独立，可并行。
 
 ### 风险点
 

@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "yahoo-finance": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["yahoo-finance-mcp"]
+    },
+    "alpha-vantage": {
+      "type": "http",
+      "url": "https://mcp.alphavantage.co",
+      "env": { "ALPHA_VANTAGE_API_KEY": "${ALPHA_VANTAGE_API_KEY}" }
+    }
+  }
+}

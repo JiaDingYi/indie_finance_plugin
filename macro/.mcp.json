@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "fred": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@stefanoamorelli/fred-mcp-server"],
+      "env": { "FRED_API_KEY": "${FRED_API_KEY}" }
+    },
+    "defillama": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@iqai/mcp-defillama"]
+    },
+    "coingecko": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@coingecko/coingecko-mcp"]
+    }
+  }
+}

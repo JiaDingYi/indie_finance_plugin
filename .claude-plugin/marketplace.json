@@ -1,0 +1,25 @@
+{
+  "name": "indie-finance-plugin",
+  "plugins": [
+    {
+      "name": "tradfi",
+      "description": "Traditional finance analysis: comps, DCF, earnings, stock screening — powered by free data sources",
+      "source": "./tradfi"
+    },
+    {
+      "name": "crypto",
+      "description": "Crypto market analysis: token fundamentals, DeFi protocols, airdrop evaluation, on-chain queries",
+      "source": "./crypto"
+    },
+    {
+      "name": "macro",
+      "description": "Macroeconomic dashboard and news digest spanning traditional and crypto markets",
+      "source": "./macro"
+    },
+    {
+      "name": "portfolio",
+      "description": "Portfolio management: tax-aware rebalancing, tax-loss harvesting, drift analysis, asset location optimization",
+      "source": "./portfolio"
+    }
+  ]
+}

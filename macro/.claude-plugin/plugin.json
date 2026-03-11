@@ -1,0 +1,8 @@
+{
+  "name": "macro",
+  "version": "0.1.0",
+  "description": "Macroeconomic dashboard and news digest spanning traditional and crypto markets — powered by FRED, DefiLlama, CoinGecko",
+  "author": {
+    "name": "jdy"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "description": "Portfolio management: tax-aware rebalancing, tax-loss harvesting, drift analysis, asset location optimization",
+  "author": {
+    "name": "jdy"
+  }
+}

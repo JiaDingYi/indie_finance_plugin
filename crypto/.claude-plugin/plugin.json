@@ -1,0 +1,8 @@
+{
+  "name": "crypto",
+  "version": "0.1.0",
+  "description": "Crypto market analysis: token fundamentals, DeFi protocols, airdrop evaluation, on-chain queries — powered by CoinGecko, DefiLlama, Dune",
+  "author": {
+    "name": "jdy"
+  }
+}
