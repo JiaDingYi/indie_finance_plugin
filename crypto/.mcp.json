@@ -3,12 +3,16 @@
     "coingecko": {
       "type": "stdio",
       "command": "npx",
-      "args": ["@coingecko/coingecko-mcp"]
+      "args": ["@coingecko/coingecko-mcp"],
+      "env": {
+        "COINGECKO_DEMO_API_KEY": "",
+        "COINGECKO_ENVIRONMENT": "demo"
+      }
     },
     "dune": {
       "type": "http",
       "url": "https://api.dune.com/mcp/v1",
-      "headers": { "X-DUNE-API-KEY": "${DUNE_API_KEY}" }
+      "headers": { "X-DUNE-API-KEY": "" }
     }
   }
 }
