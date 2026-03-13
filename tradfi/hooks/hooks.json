@@ -5,7 +5,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/check-keys.sh"
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/check-keys.sh",
+            "timeout": 30
           }
         ]
       }
