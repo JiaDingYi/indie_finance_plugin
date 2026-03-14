@@ -31,7 +31,9 @@ export async function extractMarkdown(
 
   const dom = new JSDOM(html, { url, virtualConsole });
   const result = await Defuddle(dom, url, { markdown: true });
-  const markdown = (result.content || "").trim();
+  const body = (result.content || "").trim();
+  // Prepend title as h1 if Defuddle extracted it separately
+  const markdown = result.title && body ? `# ${result.title}\n\n${body}` : body;
 
   if (!markdown) {
     // Fallback: return raw text content
