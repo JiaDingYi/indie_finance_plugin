@@ -20,11 +20,11 @@ allowed-tools: mcp__fred__*, mcp__coingecko__*, mcp__defillama__*, WebSearch, We
 - **coingecko** — 代币事件
 - **defillama** — 协议事件
 
-### Layer 2: Web Search
-- 财报日历、FOMC 日期、代币解锁日历、空投日期、加密会议
-
-### Layer 3: Chrome CDP
+### Layer 2: Chrome CDP
 - 需登录的日历源
+
+### Layer 3: Web Search
+- 财报日历、FOMC 日期、代币解锁日历、空投日期、加密会议
 
 ## Workflow
 

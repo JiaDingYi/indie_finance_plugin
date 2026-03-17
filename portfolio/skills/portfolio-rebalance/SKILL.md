@@ -15,11 +15,11 @@ description: |
 ### Layer 1: MCP
 - **yahoo-finance** — 实时股价/ETF价格/持仓市值计算
 
-### Layer 2: Web Search
-- 资产类别基准数据、ETF 详细信息
-
-### Layer 3: Chrome CDP
+### Layer 2: Chrome CDP
 - 券商账户页面（如需）
+
+### Layer 3: Web Search
+- 资产类别基准数据、ETF 详细信息
 
 每个数据点标注 "Source: [source name]"。
 

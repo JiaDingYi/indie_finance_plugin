@@ -11,13 +11,13 @@ description: Systematic stock screening and investment idea sourcing. Combines q
 1. **yahoo-finance** — Stock screener, key statistics, sector data, insider trading
 2. **financial-modeling-prep** — Financial ratios, screener API, insider data, analyst ratings
 
-### Layer 2: Web Search
+### Layer 2: Chrome CDP
+- For pages requiring login or dynamic rendering
+
+### Layer 3: Web Search
 - finviz.com for visual screening
 - finance.yahoo.com/screener
 - sec.gov for insider filings
-
-### Layer 3: Chrome CDP
-- For pages requiring login or dynamic rendering
 
 ## Workflow
 

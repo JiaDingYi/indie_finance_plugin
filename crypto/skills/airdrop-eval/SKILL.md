@@ -17,11 +17,11 @@ description: |
 - **coingecko** — 代币信息（如已发币）
 - **defillama** — TVL 趋势、协议数据
 
-### Layer 2: Web Search
-- 融资背景、团队信息、社区规模、积分机制、官方公告
-
-### Layer 3: Chrome CDP
+### Layer 2: Chrome CDP
 - 官网、文档、Discord
+
+### Layer 3: Web Search
+- 融资背景、团队信息、社区规模、积分机制、官方公告
 
 ## Workflow
 

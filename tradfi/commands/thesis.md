@@ -20,13 +20,13 @@ Create, update, or review an investment thesis for the target company.
 2. **financial-modeling-prep** — analyst estimates, ratings, financial ratios
 3. **alpha-vantage** — earnings transcripts, supplementary data
 
-### Layer 2: Web Search
+### Layer 2: Chrome CDP
+- For pages requiring login or dynamic rendering
+
+### Layer 3: Web Search
 - Company IR pages for press releases
 - SEC EDGAR for filings
 - Industry news sources
-
-### Layer 3: Chrome CDP
-- For pages requiring login or dynamic rendering
 
 ## Workflow
 

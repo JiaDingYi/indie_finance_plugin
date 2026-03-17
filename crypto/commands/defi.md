@@ -21,11 +21,11 @@ allowed-tools: mcp__defillama__*, mcp__coingecko__*, WebSearch, WebFetch
 ### Layer 1 Secondary: MCP
 - **coingecko** — 协议代币数据/DEX 补充数据
 
-### Layer 2: Web Search
-- 协议文档、审计报告、治理提案
-
-### Layer 3: Chrome CDP
+### Layer 2: Chrome CDP
 - 需登录的页面
+
+### Layer 3: Web Search
+- 协议文档、审计报告、治理提案
 
 Always annotate: "Source: [source name]" on each data point.
 

@@ -20,11 +20,11 @@ allowed-tools: mcp__fred__*, mcp__coingecko__*, mcp__defillama__*, WebSearch, We
 - **coingecko** — 加密市场隔夜表现
 - **defillama** — DeFi TVL 变动
 
-### Layer 2: Web Search
-- 财经新闻、期货/盘前数据、加密新闻
-
-### Layer 3: Chrome CDP
+### Layer 2: Chrome CDP
 - 需登录的新闻源
+
+### Layer 3: Web Search
+- 财经新闻、期货/盘前数据、加密新闻
 
 ## Workflow
 

@@ -76,12 +76,12 @@ Fetch data from MCP servers, user provided data, and the web.
 1. **yahoo-finance** — Historical financials, current price, shares outstanding, balance sheet
 2. **financial-modeling-prep** — DCF inputs, WACC components, analyst estimates, growth rates
 
-**Layer 2: Web Search**
+**Layer 2: Chrome CDP**
+- For detailed filings or pages with bot detection
+
+**Layer 3: Web Search**
 - finance.yahoo.com, macrotrends.net for historical data
 - SEC EDGAR for 10-K/10-Q filings
-
-**Layer 3: Chrome CDP**
-- For detailed filings or pages with bot detection
 
 **Layer 4: User-Provided Data** - Historical financials from their research
 

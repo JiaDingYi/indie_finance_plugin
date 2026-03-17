@@ -20,14 +20,14 @@ Create an institutional-quality earnings update report (8-12 pages) for the targ
 2. **yahoo-finance** — earnings results, financial statements, analyst estimates
 3. **financial-modeling-prep** — detailed estimates, historical earnings, analyst ratings
 
-### Layer 2: Web Search
+### Layer 2: Chrome CDP
+- Seeking Alpha (may require login for full transcripts)
+- Earnings call replay pages
+
+### Layer 3: Web Search
 - seekingalpha.com for earnings transcripts
 - finance.yahoo.com/earnings
 - sec.gov/cgi-bin/browse-edgar for filings
-
-### Layer 3: Chrome CDP
-- Seeking Alpha (may require login for full transcripts)
-- Earnings call replay pages
 
 ## Critical: Use Latest Data
 

@@ -20,11 +20,11 @@ allowed-tools: mcp__fred__*, mcp__coingecko__*, mcp__defillama__*, WebSearch, We
 - **defillama** — 稳定币总市值/加密 TVL
 - **coingecko** — BTC/ETH/全球加密市值
 
-### Layer 2: Web Search
-- 经济数据日历、FOMC 声明、VIX、恐惧贪婪指数
-
-### Layer 3: Chrome CDP
+### Layer 2: Chrome CDP
 - 需登录的数据源
+
+### Layer 3: Web Search
+- 经济数据日历、FOMC 声明、VIX、恐惧贪婪指数
 
 Always annotate: "Source: [source name]" on each data point.
 

@@ -21,11 +21,11 @@ allowed-tools: mcp__dune__*, WebSearch, WebFetch
 - **Visualization**: generateVisualization
 - **Account**: getUsage
 
-### Layer 2: Web Search
-- Dune 公开 dashboard 数据
-
-### Layer 3: Chrome CDP
+### Layer 2: Chrome CDP
 - 需登录的 Dune dashboard
+
+### Layer 3: Web Search
+- Dune 公开 dashboard 数据
 
 ## Workflow
 

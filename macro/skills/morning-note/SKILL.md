@@ -18,13 +18,13 @@ description: |
 - **coingecko** — 加密市场隔夜表现、重大价格变动
 - **defillama** — DeFi TVL 变动、协议重大事件
 
-### Layer 2: Web Search
+### Layer 2: Chrome CDP
+- 需登录的新闻源
+
+### Layer 3: Web Search
 - 财经新闻（earnings, M&A, 政策变化）
 - 期货/盘前数据
 - 加密新闻（项目公告、监管动态）
-
-### Layer 3: Chrome CDP
-- 需登录的新闻源
 
 ## Workflow
 

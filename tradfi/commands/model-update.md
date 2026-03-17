@@ -20,12 +20,12 @@ Update an existing financial model with new data and recalculate valuation.
 2. **financial-modeling-prep** — detailed estimates, consensus data
 3. **alpha-vantage** — earnings calendar, supplementary data
 
-### Layer 2: Web Search
+### Layer 2: Chrome CDP
+- For detailed filings or earnings call replays
+
+### Layer 3: Web Search
 - Company IR pages for press releases
 - SEC EDGAR for filings
-
-### Layer 3: Chrome CDP
-- For detailed filings or earnings call replays
 
 ## Workflow
 

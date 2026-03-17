@@ -29,13 +29,13 @@ description: |
 - **coingecko** — 代币相关新闻和社区讨论
 - **defillama** — 协议重大变动（TVL 异常波动作为新闻线索）
 
-### Layer 2: Web Search
+### Layer 2: Chrome CDP
+- 需登录的新闻源
+
+### Layer 3: Web Search
 - 财经新闻网站（Reuters, Bloomberg, CNBC, CoinDesk, The Block）
 - 公司 IR 页面（press releases）
 - 项目官方公告（Twitter/X, Medium, Discord）
-
-### Layer 3: Chrome CDP
-- 需登录的新闻源
 
 ## Workflow
 

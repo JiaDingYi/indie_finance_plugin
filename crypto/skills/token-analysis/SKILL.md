@@ -17,11 +17,11 @@ description: |
 ### Layer 1: MCP
 - **coingecko** — 价格/市值/FDV/供给量/交易对/DEX 数据(GeckoTerminal)
 
-### Layer 2: Web Search
-- 解锁时间表、审计报告、项目文档、新闻
-
-### Layer 3: Chrome CDP
+### Layer 2: Chrome CDP
 - 需登录的页面
+
+### Layer 3: Web Search
+- 解锁时间表、审计报告、项目文档、新闻
 
 每个数据点标注 "Source: [source name]"。
 

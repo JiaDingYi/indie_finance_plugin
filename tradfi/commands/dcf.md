@@ -20,13 +20,13 @@ Build an institutional-quality DCF valuation model for the target company.
 2. **financial-modeling-prep** — detailed financials, analyst estimates, enterprise value components
 3. **alpha-vantage** — supplementary fundamentals, earnings data
 
-### Layer 2: Web Search
+### Layer 2: Chrome CDP
+- For pages requiring login or dynamic rendering
+
+### Layer 3: Web Search
 - SEC EDGAR for 10-K/10-Q filings
 - finance.yahoo.com for consensus estimates
 - macrotrends.net for historical data
-
-### Layer 3: Chrome CDP
-- For pages requiring login or dynamic rendering
 
 Always annotate: "Source: [source name]" on each data point.
 

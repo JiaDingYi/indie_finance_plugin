@@ -18,12 +18,12 @@ description: |
 - **defillama** — 稳定币总市值/全球加密 TVL/DeFi 总量
 - **coingecko** — BTC/ETH 价格/全球加密市值/市场情绪
 
-### Layer 2: Web Search
+### Layer 2: Chrome CDP
+- 需登录的数据源
+
+### Layer 3: Web Search
 - 经济数据发布日历、FOMC 声明、市场评论
 - VIX 数据、恐惧贪婪指数
-
-### Layer 3: Chrome CDP
-- 需登录的数据源
 
 每个数据点标注 "Source: [source name]"。
 

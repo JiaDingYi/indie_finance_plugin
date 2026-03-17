@@ -18,11 +18,11 @@ allowed-tools: Bash(python3:*), Bash(pip:*), mcp__yahoo-finance__*, WebSearch, W
 ### Layer 1: MCP
 - **yahoo-finance** — 实时价格/历史价格/ETF 信息
 
-### Layer 2: Web Search
-- Wash Sale 规则、ETF 替代品对照
-
-### Layer 3: Chrome CDP
+### Layer 2: Chrome CDP
 - 券商税务报告
+
+### Layer 3: Web Search
+- Wash Sale 规则、ETF 替代品对照
 
 ## Workflow
 

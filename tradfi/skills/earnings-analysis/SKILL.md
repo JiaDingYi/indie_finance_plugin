@@ -36,14 +36,14 @@ Use when the user requests:
 2. **yahoo-finance** — Earnings results, financial statements, analyst estimates
 3. **financial-modeling-prep** — Detailed estimates, historical earnings, analyst ratings
 
-### Layer 2: Web Search
+### Layer 2: Chrome CDP
+- Seeking Alpha (may require login for full transcripts)
+- Earnings call replay pages
+
+### Layer 3: Web Search
 - seekingalpha.com/earnings/transcripts
 - finance.yahoo.com/earnings
 - sec.gov/cgi-bin/browse-edgar
-
-### Layer 3: Chrome CDP
-- Seeking Alpha (may require login for full transcripts)
-- Earnings call replay pages
 
 ## Critical Requirements
 

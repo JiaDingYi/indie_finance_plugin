@@ -14,13 +14,13 @@ Build a complete competitive analysis deck. This is a two-phase process: gather 
 2. **alpha-vantage** — Real-time and historical market data, technical indicators, sector performance
 3. **financial-modeling-prep** — Industry data, peer comparison, financial statements, market share estimates
 
-### Layer 2: Web Search
+### Layer 2: Chrome CDP
+- Pages with dynamic content or login requirements
+
+### Layer 3: Web Search
 - Company investor relations pages
 - Industry reports, analyst coverage
 - News for recent competitive developments
-
-### Layer 3: Chrome CDP
-- Pages with dynamic content or login requirements
 
 ## Phase 1 — Scope the analysis
 

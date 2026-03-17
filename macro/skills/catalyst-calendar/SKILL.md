@@ -18,16 +18,16 @@ description: |
 - **coingecko** — 代币事件、项目动态
 - **defillama** — 协议 TVL 变动、DeFi 事件
 
-### Layer 2: Web Search
+### Layer 2: Chrome CDP
+- 需登录的日历源
+
+### Layer 3: Web Search
 - 财报日历（公司 IR 页面）
 - FOMC 会议日期
 - 代币解锁日历（TokenUnlocks）
 - 空投快照/TGE 日期
 - 协议升级/硬分叉时间表
 - 加密会议日程
-
-### Layer 3: Chrome CDP
-- 需登录的日历源
 
 ## Workflow
 

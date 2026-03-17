@@ -16,11 +16,11 @@ description: |
 ### Layer 1: MCP
 - **yahoo-finance** — 实时价格/历史价格/ETF 信息/相关标的搜索
 
-### Layer 2: Web Search
-- Wash Sale 规则最新解读、ETF 替代品对照表
-
-### Layer 3: Chrome CDP
+### Layer 2: Chrome CDP
 - 券商税务报告页面（如需）
+
+### Layer 3: Web Search
+- Wash Sale 规则最新解读、ETF 替代品对照表
 
 ## Workflow
 

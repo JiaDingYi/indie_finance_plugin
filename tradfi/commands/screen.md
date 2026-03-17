@@ -19,13 +19,13 @@ Run a systematic stock screen and present investment idea candidates.
 1. **yahoo-finance** — stock screener, key statistics, sector data, insider trading
 2. **financial-modeling-prep** — financial ratios, screener API, insider data, analyst ratings
 
-### Layer 2: Web Search
+### Layer 2: Chrome CDP
+- For pages requiring login or dynamic rendering
+
+### Layer 3: Web Search
 - finviz.com for visual screening
 - finance.yahoo.com/screener
 - sec.gov for insider filings
-
-### Layer 3: Chrome CDP
-- For pages requiring login or dynamic rendering
 
 ## Workflow
 

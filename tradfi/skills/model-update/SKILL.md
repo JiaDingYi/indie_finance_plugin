@@ -12,12 +12,12 @@ description: Update financial models with new data — quarterly earnings, manag
 2. **financial-modeling-prep** — Detailed estimates, consensus data
 3. **alpha-vantage** — Earnings call transcripts, technical indicators only (25次/天 limit)
 
-### Layer 2: Web Search
+### Layer 2: Chrome CDP
+- For detailed filings or earnings call replays
+
+### Layer 3: Web Search
 - Company IR pages for press releases
 - SEC EDGAR for filings
-
-### Layer 3: Chrome CDP
-- For detailed filings or earnings call replays
 
 ## Workflow
 

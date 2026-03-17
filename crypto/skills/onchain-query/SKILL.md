@@ -21,11 +21,11 @@ description: |
 - **Visualization**: generateVisualization
 - **Account**: getUsage
 
-### Layer 2: Web Search
-- Dune 公开 dashboard 的预计算数据
-
-### Layer 3: Chrome CDP
+### Layer 2: Chrome CDP
 - 需登录的 Dune dashboard
+
+### Layer 3: Web Search
+- Dune 公开 dashboard 的预计算数据
 
 ## Workflow — Mode A: Natural Language Query
 

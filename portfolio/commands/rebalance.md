@@ -18,11 +18,11 @@ allowed-tools: Bash(python3:*), Bash(pip:*), mcp__yahoo-finance__*, WebSearch, W
 ### Layer 1: MCP
 - **yahoo-finance** — 实时股价/ETF价格/持仓市值
 
-### Layer 2: Web Search
-- 资产类别基准、ETF 信息
-
-### Layer 3: Chrome CDP
+### Layer 2: Chrome CDP
 - 券商页面
+
+### Layer 3: Web Search
+- 资产类别基准、ETF 信息
 
 Always annotate: "Source: [source name]" on each data point.
 

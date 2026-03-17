@@ -22,12 +22,12 @@ Fetch data using the three-layer fallback:
 2. **financial-modeling-prep** — detailed financials, ratios, enterprise value, peer comparison
 3. **alpha-vantage** — technical indicators, additional fundamentals
 
-### Layer 2: Web Search
+### Layer 2: Chrome CDP
+- For pages requiring login or dynamic rendering
+
+### Layer 3: Web Search
 - finance.yahoo.com, macrotrends.net for financial data
 - SEC EDGAR for filings
-
-### Layer 3: Chrome CDP
-- For pages requiring login or dynamic rendering
 
 Always annotate: "Source: [source name]" on each data point.
 
