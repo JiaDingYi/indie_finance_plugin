@@ -82,7 +82,7 @@
 ### FMP (Financial Modeling Prep)
 
 - **官方状态**：无官方 MCP server，无已知社区实现
-- **Fallback 方案**：Web Search sec.gov/edgar + tipranks.com
+- **Fallback 方案**：Chrome CDP `sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK={ticker}` + `tipranks.com/stocks/{ticker}/forecast`（Layer 2）；Web Search sec.gov/edgar + tipranks.com 兜底（Layer 3）
 
 ## 当前 MCP 配置
 
