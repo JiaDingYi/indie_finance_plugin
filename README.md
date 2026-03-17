@@ -12,7 +12,7 @@
 
 ```bash
 # 添加插件市场
-/plugin marketplace add JiaDingYi/indie_finance_plugin
+/plugin marketplace add Ken-zy/indie_finance_plugin
 
 # 安装需要的子插件（按需选择）
 /plugin install tradfi      # 传统金融分析
