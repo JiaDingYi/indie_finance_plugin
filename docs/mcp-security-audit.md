@@ -4,7 +4,7 @@
 
 ## 审计结论
 
-仅启用通过安全审计的**官方 MCP server**，非官方社区实现暂不引入，通过三层 Fallback 的 Layer 2（Web Search）和 Layer 3（Chrome CDP）覆盖数据需求。
+仅启用通过安全审计的**官方 MCP server**，非官方社区实现暂不引入，通过三层 Fallback 的 Layer 2（Chrome CDP）和 Layer 3（Web Search）覆盖数据需求。
 
 ## 官方 MCP Server（已启用）
 

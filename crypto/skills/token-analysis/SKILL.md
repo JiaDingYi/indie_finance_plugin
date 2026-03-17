@@ -46,7 +46,7 @@ description: |
 - DEX vs CEX 交易量占比
 
 ### Step 4: Fetch Supplementary Data
-通过 Web Search 获取：
+按三层 Fallback 策略获取（Layer 2: Chrome CDP 访问项目官网/文档/审计报告页，URL 未知时先 Web Search 取 URL 再 CDP；Layer 3: CDP 不可用或数据不足时 Web Search 兜底）：
 - 代币解锁时间表
 - 合约审计状态
 - 团队/项目背景
