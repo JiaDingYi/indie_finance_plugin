@@ -1,5 +1,9 @@
 {
   "name": "indie-finance-plugin",
+  "owner": {
+    "name": "Ken-zy",
+    "email": ""
+  },
   "plugins": [
     {
       "name": "tradfi",
